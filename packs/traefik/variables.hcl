@@ -1,7 +1,7 @@
 variable "job_name" {
     description = "The name to use as the job name which overrides using the pack name"
     type        = string
-    default     = "support-services"
+    default     = "traefik"
 }
 
 variable "job_count" {
@@ -22,46 +22,22 @@ variable "region" {
     default     = "global"
 }
 
-variable "docker_username" {
-    description = "Docker username"
-    type        = string
-    default     = "docker"
-}
-
-variable "docker_password" {
-    description = "Docker password"
-    type        = string
-    default     = ""
-}
-
 variable "docker_image" {
     description = "The docker image version"
     type        = string
-    default     = "vault:latest"
+    default     = "traefik:latest"
 }
 
-variable "gonsul_repo_url" {
-    description = "Gonsul repo URL"
+variable "traefik_ui_url" {
+    description = "URL for exposing Traefik web UI"
     type        = string
-    default     = ""
+    default     = "traefik.localhost"
 }
 
-variable "gonsul_private_key" {
-    description = "Gonsul repo SSH private key"
+variable "consul_ui_url" {
+    description = "URL for exposing Consul web UI"
     type        = string
-    default     = ""
-}
-
-variable "vault_log_level" {
-    description = "Gonsul repo SSH private key"
-    type        = string
-    default     = "warn"
-}
-
-variable "vault_ui_url" {
-    description = "Vault UI URL"
-    type        = string
-    default     = ""
+    default     = "consul.localhost"
 }
 
 variable "resources" {
