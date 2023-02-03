@@ -1,7 +1,7 @@
 job [[ template "job_name" . ]] {
   [[ template "region" . ]]
   type = "service"
-  datacenters = [ [[ range $idx, $dc := .hello_world.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
+  datacenters = [ [[ range $idx, $dc := .apache.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
 
   group "apache" {
     count = [[ .apache.job_count ]]
@@ -14,7 +14,7 @@ job [[ template "job_name" . ]] {
       }
     }
 
-    [[ if .hello_world.register_service ]]
+    [[ if .apache.register_service ]]
     service {
       name = "[[ .apache.service_name ]]"
       provider = "consul"
