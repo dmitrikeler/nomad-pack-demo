@@ -1,7 +1,7 @@
 job [[ template "job_name" . ]] {
   [[ template "region" . ]]
   datacenters = [ [[ range $idx, $dc := .traefik.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
-  type        = "service"
+  type        = "system"
 
   group "traefik" {
     count = [[ .traefik.job_count ]]
