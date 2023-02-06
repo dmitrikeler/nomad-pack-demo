@@ -64,6 +64,12 @@ variable "http_port" {
     default     = 8888
 }
 
+variable "http_url" {
+    description = "Vault UI URL"
+    type        = string
+    default     = "demo.local"
+}
+
 variable "resources" {
     description = "The resource to assign to the Nginx system task that runs on every client"
     type = object({

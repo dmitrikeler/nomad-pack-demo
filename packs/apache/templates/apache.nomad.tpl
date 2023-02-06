@@ -25,7 +25,7 @@ job [[ template "job_name" . ]] {
         "traefik.enable=true",
         "traefik.connect=true",
         "traefik.consulcatalog.connect=true",
-        "traefik.http.routers.apache.rule=Host(`devops-demo.finnplay.net`)"
+        "traefik.http.routers.apache.rule=Host(`[[ .apache.demo_url ]]`)"
         #"traefik.http.routers.apache.rule=Host(`devops-demo.finnplay.net`) && Path(`/apache`)"
       ]
 
