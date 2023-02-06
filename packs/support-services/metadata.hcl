@@ -7,5 +7,5 @@ pack {
   name = "support-services"
   description = "Deploys support services for Nomad demo."
   url = "https://github.com/dmitrikeler/nomad-pack-demo/support-services"
-  version = "0.0.1"
+  version = "0.0.2"
 }

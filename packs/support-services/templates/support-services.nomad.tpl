@@ -81,14 +81,7 @@ job [[ template "job_name" . ]] {
 
       template {
         data = <<EOF
------BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-QyNTUxOQAAACCLQQstQZ7uPxFupTL1w8Le28W5Q9fz5bFXCUE4UVS/6wAAAKjz+yWS8/sl
-kgAAAAtzc2gtZWQyNTUxOQAAACCLQQstQZ7uPxFupTL1w8Le28W5Q9fz5bFXCUE4UVS/6w
-AAAEAZZ0/BG1NGuks4/h/9UeWTHyW8UBLf2xSHtpVqCsUfRYtBCy1Bnu4/EW6lMvXDwt7b
-xblD1/PlsVcJQThRVL/rAAAAHmRpc3RyaWJ1dGlvbi1kZXZvcHMtcHJvZHVjdGlvbgECAw
-QFBgc=
------END OPENSSH PRIVATE KEY-----
+[[ .support-services.gonsul_private_key ]]
 EOF
         destination = "/secrets/id_rsa"
         change_mode = "restart"
