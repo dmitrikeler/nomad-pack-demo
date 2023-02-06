@@ -20,7 +20,7 @@ job [[ template "job_name" . ]] {
       }
 
       port "nomad" {
-        statis = 4646
+        static = 4646
       }
     }
 
