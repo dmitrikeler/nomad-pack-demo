@@ -4,7 +4,7 @@ job [[ template "job_name" . ]] {
   type        = "system"
 
   group "traefik" {
-    count = [[ .traefik.job_count ]]
+    count = 1
 
     network {
       port "http" {
