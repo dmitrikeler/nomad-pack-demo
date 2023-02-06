@@ -31,13 +31,13 @@ variable "docker_image" {
 variable "traefik_ui_url" {
     description = "URL for exposing Traefik web UI"
     type        = string
-    default     = "traefik.localhost"
+    default     = "traefik.local"
 }
 
 variable "consul_ui_url" {
     description = "URL for exposing Consul web UI"
     type        = string
-    default     = "consul.localhost"
+    default     = "consul.local"
 }
 
 variable "resources" {
