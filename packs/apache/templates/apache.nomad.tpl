@@ -25,7 +25,7 @@ job [[ template "job_name" . ]] {
         "traefik.enable=true",
         "traefik.connect=true",
         "traefik.consulcatalog.connect=true",
-        "traefik.http.routers.apache.rule=Host(`[[ .apache.demo_url ]]`)"
+        "traefik.http.routers.apache.rule=Host(`[[ .apache.http_url ]]`)"
         #"traefik.http.routers.apache.rule=Host(`devops-demo.finnplay.net`) && Path(`/apache`)"
       ]
 
@@ -86,8 +86,8 @@ EOF
         ]
 
         auth {
-          username = [[.apache.vault_token | quote]]
-          password = [[.apache.vault_token | quote]]
+          username = [[.apache.docker_username | quote]]
+          password = [[.apache.docker_password | quote]]
         }
       }
     }
