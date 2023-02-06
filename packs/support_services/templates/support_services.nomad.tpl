@@ -1,9 +1,9 @@
 job [[ template "job_name" . ]] {
   [[ template "region" . ]]
   type = "service"
-  datacenters = [ [[ range $idx, $dc := .support-services.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
+  datacenters = [ [[ range $idx, $dc := .support_services.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
 
-  group "support-services" {
+  group "support_services" {
     count = 1
     
     network {
@@ -19,13 +19,13 @@ job [[ template "job_name" . ]] {
       provider = "consul"
       port = "vault"
       tags = [
-        "support-services",
+        "support_services",
         "traefik.enable=true",
         "traefik.connect=true",
         "traefik.consulcatalog.connect=true",
         # Vault's UI (and API) is not able to work with domain subpathing
         # "traefik.http.routers.vault.rule=Host(`devops.internal`) && Path(`/vault*`)"
-        "traefik.http.routers.vault.rule=Host(`[[ .support-services.vault_ui_url ]]`)"
+        "traefik.http.routers.vault.rule=Host(`[[ .support_services.vault_ui_url ]]`)"
       ]
 
       address_mode = "alloc"
@@ -53,8 +53,8 @@ job [[ template "job_name" . ]] {
       }
         
       config {
-        image = [[ .support-services.docker_image | quote ]]
-        args  = ["server", "-dev", "-log-level=[[ .support-services.vault_log_level ]]"]
+        image = [[ .support_services.docker_image | quote ]]
+        args  = ["server", "-dev", "-log-level=[[ .support_services.vault_log_level ]]"]
         ports = ["vault"]
       }
     }
@@ -68,12 +68,12 @@ job [[ template "job_name" . ]] {
       }
 
       resources {
-        cpu    = [[ .support-services.resources.cpu ]]
-        memory = [[ .support-services.resources.memory ]]
+        cpu    = [[ .support_services.resources.cpu ]]
+        memory = [[ .support_services.resources.memory ]]
       }
 
       env {
-        GONSUL_REPO_URL = [[ .support-services.gonsul_repo_url | quote ]]
+        GONSUL_REPO_URL = [[ .support_services.gonsul_repo_url | quote ]]
         GONSUL_REPO_BASE_PATH = "configuration/"
         GONSUL_CONSUL_BASE_PATH = ""
         GONSUL_REPO_SSH_KEY = "/secrets/id_rsa"
@@ -81,7 +81,7 @@ job [[ template "job_name" . ]] {
 
       template {
         data = <<EOF
-[[ .support-services.gonsul_private_key ]]
+[[ .support_services.gonsul_private_key ]]
 EOF
         destination = "/secrets/id_rsa"
         change_mode = "restart"
