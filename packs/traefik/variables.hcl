@@ -40,6 +40,12 @@ variable "consul_ui_url" {
     default     = "consul.local"
 }
 
+variable "nomad_ui_url" {
+    description = "URL for exposing Nomad web UI"
+    type        = string
+    default     = "nomad.local"
+}
+
 variable "resources" {
     description = "The resource to assign to the Nginx system task that runs on every client"
     type = object({

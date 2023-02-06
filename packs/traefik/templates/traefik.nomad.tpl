@@ -18,6 +18,10 @@ job [[ template "job_name" . ]] {
       port "consul" {
         static = 8500
       }
+
+      port "nomad" {
+        statis = 4646
+      }
     }
 
     service {
@@ -73,6 +77,24 @@ job [[ template "job_name" . ]] {
       check {
         type     = "http"
         port     = "consul"
+        path     = "/v1/status/leader"
+        interval = "10s"
+        timeout  = "2s"
+      }
+    }
+
+    service {
+      name = "nomad-ui"
+      provider = "consul"
+      port = "nomad"
+      tags = [
+        "traefik.enable=true",
+        "traefik.http.routers.nomad.rule=Host(`[[ .traefik.nomad_ui_url ]]`)"
+      ]
+
+      check {
+        type     = "http"
+        port     = "nomad"
         path     = "/v1/status/leader"
         interval = "10s"
         timeout  = "2s"
