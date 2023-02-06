@@ -77,7 +77,7 @@ EOF
       }
         
       config {
-        image = "[[ .apache.image ]]:[[ .apache.version_tag ]]"
+        image = "[[ .apache.docker_image ]]"
         ports = ["http"]
 
         args = [
