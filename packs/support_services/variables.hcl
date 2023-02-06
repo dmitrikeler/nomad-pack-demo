@@ -61,7 +61,7 @@ variable "vault_log_level" {
 variable "vault_ui_url" {
     description = "Vault UI URL"
     type        = string
-    default     = ""
+    default     = "vault.local"
 }
 
 variable "resources" {
